@@ -13,24 +13,26 @@ jobs:
         include:
           - os: ubuntu-latest
             artifact: hello-ubuntu
-            script: bash ci.sh
             binary: target/release/hello
           - os: windows-latest
             artifact: hello-windows
-            script: ci.bat
             binary: target/release/hello.exe
           - os: macos-latest
             artifact: hello-macos
-            script: bash ci.sh
             binary: target/release/hello
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Run CI script
-        shell: ${{ matrix.os == 'windows-latest' && 'cmd' || 'bash' }}
-        run: ${{ matrix.script }}
+      - name: Run CI script on Linux and macOS
+        if: matrix.os != 'windows-latest'
+        run: bash ci.sh
+
+      - name: Run CI script on Windows
+        if: matrix.os == 'windows-latest'
+        shell: cmd
+        run: ci.bat
 
       - name: Upload executable
         uses: actions/upload-artifact@v4
