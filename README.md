@@ -3,7 +3,7 @@ title: Rust Build Engineer Agent Infrastructure
 description: 'GitHub Copilot agent infrastructure for a future Cargo-based Rust project.'
 ---
 
-# Rust Build Engineer Agent Infrastructure
+# Rust Hello World Project
 
 Variant: 4
 
@@ -12,10 +12,14 @@ Variant: 4
 - Testing: `cargo test`
 
 ## Description
-This repository contains the GitHub Copilot custom agent infrastructure for a future Rust project. The custom agent is named `build-engineer` and is intended to automate project generation, build/test validation, and CI configuration for a Cargo-based Rust hello project.
+This is a small Rust Hello World project built and tested with Cargo. The repository also contains the GitHub Copilot custom agent infrastructure used to automate its setup and CI configuration.
 
-## Future project planned
-The eventual project will be a simple Rust hello-world application compiled with Cargo and validated on Windows, Linux, and macOS.
+## Commands
+```text
+cargo run
+cargo build --release
+cargo test
+```
 
 ## How to run the agent
 Open GitHub Copilot Chat in VS Code and select the custom agent called `build-engineer`.
